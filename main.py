@@ -9,10 +9,8 @@ with open(company_urls_file, 'r') as file:
     company_urls = json.load(file)
     company_domains = [url.split('/')[2] for url in company_urls]
 
-# Run job_page_change_detector.py and get the output file
+# Check for page changes since the last time it ran
 subprocess.run(["python", "job_page_change_detector.py"])
-
-# Get the name of the output file
 output_files = [f for f in os.listdir('.') if f.startswith('output_')]
 if output_files:
     output_file = output_files[-1]  # Get the latest output file
@@ -20,24 +18,24 @@ else:
     print("No output file found.")
     exit()
 
-# Read the JSON data from the output file
+# Read the JSON data about page changes
 with open(output_file, 'r') as file:
     data = json.load(file)
 
-# Filter out the URLs that had no changes
+# Filter only URLs that had changes and have the target term
 changed_urls = [
     url_data['URL'] for url_data in data if url_data['Change Detected?']
     and url_data['Contains \'product manager\'']
 ]
 
-# Run page_scraper.py for each changed URL with both options set to 'y'
+# Scrape all relevant URLs and get rid of irrelevant parts of page (do we still need this?)
 for url, domain in zip(changed_urls, company_domains):
     print(f"Scraping {url}")
     subprocess.run(["python", "page_scraper.py"],
                    input=f"{url}\ny\ny\n{domain}",
                    text=True)
 
-# Find job links in the output files from page_scraper.py
+# Find job links in the scraped content
 job_links_file = open('job_list.txt', 'w')
 for filename in os.listdir('.'):
     if filename.startswith("ps_"):
