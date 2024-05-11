@@ -16,10 +16,12 @@ def get_user_input(input_type: dict) -> dict:
         for field in input_type:
             if type(input_type[field]) == list:
                 input_type[field] = str(
-                    input("What are your desired {}?: ".format(field + ' (comma separated)'))).lower().strip().split(
-                    ',')
+                    input("What are your desired {}?: ".format(
+                        field +
+                        ' (comma separated)'))).lower().strip().split(',')
             elif type(input_type[field]) == str:
-                input_type[field] = input("What is your desired {}?: ".format(field)).lower()
+                input_type[field] = input(
+                    "What is your desired {}?: ".format(field)).lower()
 
     # TODO: currently hard coding location to london
     input_type['location'] = 'london'
@@ -27,18 +29,3 @@ def get_user_input(input_type: dict) -> dict:
     print(input_type)
 
     return input_type
-
-
-# input types
-input_type_search_criteria = {
-    "job role": ""
-    , "location": ""
-    , "industries": []
-    , "keywords": []
-    , "company size (minimum)": ""
-    , "company size (maximum)": ""
-                              }
-
-# run function for search criteria
-# TODO: this needs moving to somewhere else in the programme
-search_criteria = get_user_input(input_type_search_criteria)

@@ -5,6 +5,20 @@ from job_link_finder import find_job_links
 from datetime import datetime
 from page_scraper import get_url_name
 from page_scraper import scrape_url
+from get_user_input import get_user_input
+
+# Perform the get_user_input function for search criteria - ASK THE USER STUFF
+input_type_search_criteria = {
+    "job role": "",
+    "location": "",
+    "industries": [],
+    "keywords": [],
+    "company size (minimum)": "",
+    "company size (maximum)": ""
+}
+search_criteria = get_user_input(input_type_search_criteria)
+
+
 
 # Read company domains from the JSON file
 company_urls_file = 'company_urls.json'
@@ -46,7 +60,8 @@ for filename in os.listdir('outputs'):
         with open(file_path, 'r') as file:
             html_content = file.read()
 
-        company_domains_copy = company_domains.copy()  # Create a new copy for each iteration
+        company_domains_copy = company_domains.copy(
+        )  # Create a new copy for each iteration
         job_links = find_job_links(html_content, company_domains_copy.pop(0))
         for link in job_links:
             job_links_file.write(link + '\n')
@@ -69,7 +84,9 @@ for job_link in job_links:
     job_file_path = os.path.join(job_files_folder, job_filename)
 
     # Call the scrape_url function from page_scraper.py
-    output_file = scrape_url(job_link, remove_outside_body=True, remove_tags_comments=True)
+    output_file = scrape_url(job_link,
+                             remove_outside_body=True,
+                             remove_tags_comments=True)
 
     if output_file:
         # Move the output file to the job_files folder
