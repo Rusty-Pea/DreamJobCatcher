@@ -55,6 +55,10 @@ def check_for_changes(urls, last_checked_file):
         except requests.exceptions.RequestException as e:
             print(f"\nError checking {url}: {e}")
 
+        # Add a delay so we don't get blocked
+        time.sleep(1)
+
+
     print("\nCheck completed.")
 
     # Sort by presence of "product manager"
