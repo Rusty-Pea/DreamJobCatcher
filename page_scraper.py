@@ -20,6 +20,17 @@ try:
     # Parse the HTML content using BeautifulSoup
     soup = BeautifulSoup(response.text, 'html.parser')
 
+    # Ask the user if they want to only use the contents of <body>
+    only_body = input("Do you want to only use the contents of <body>? (y/n): ")
+
+    if only_body.lower() == 'y':
+        # Extract the contents of the <body> tag
+        body_content = soup.body
+        if body_content:
+            soup = body_content
+        else:
+            print("No <body> tag found in the HTML.")
+
     # Get the current timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
