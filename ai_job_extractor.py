@@ -12,7 +12,7 @@ def extract_job_urls(file_name):
     client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
     # Define the prompt for extracting job URLs
-    prompt = f"Please extract the job URLs from the following content:\n\n{content}\n\n. Use JSON format with the keys 'index', 'url'."
+    prompt = f"Extract the job URLs from the following content:\n\n{content}\n\n. Use JSON format with the keys 'index', 'url'."
 
     # Send the prompt to the Claude model using the Anthropic library
     response = client.messages.create(
