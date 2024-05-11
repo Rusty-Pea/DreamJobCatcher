@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup, Comment
 from datetime import datetime
 import re
+import subprocess
 
 def get_url_name(url):
     # Remove the protocol (http:// or https://)
@@ -56,6 +57,13 @@ try:
         file.write(str(soup))
 
     print(f"BeautifulSoup output saved to {file_name}")
+
+    # Ask the user if they want AI to find the job URLs
+    find_job_urls = input("Do you want AI to find the job URLs? (y/n): ")
+    if find_job_urls.lower() == 'y':
+        print(f"File name: {file_name}")
+        # Call the job_url_extractor.py script with the file name as an argument
+        subprocess.run(["python", "job_url_extractor.py", file_name])
 
 except requests.exceptions.RequestException as e:
     print(f"Error accessing the URL: {e}")
