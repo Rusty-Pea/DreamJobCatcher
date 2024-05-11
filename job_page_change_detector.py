@@ -5,9 +5,9 @@ import json
 from datetime import datetime
 import subprocess
 
-# Read URLs from the file
-with open('company_urls.txt', 'r') as file:
-    urls = [line.strip() for line in file]
+# Read URLs from the JSON file
+with open('company_urls.json', 'r') as file:
+    urls = json.load(file)
 
 def check_for_changes(urls, last_checked_file):
     # Load last checked data from the JSON file
