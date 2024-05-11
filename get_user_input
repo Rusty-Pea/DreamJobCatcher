@@ -33,8 +33,10 @@ def get_user_input(input_type: dict) -> dict:
 input_type_search_criteria = {
     "job role": ""
     , "location": ""
-    # , "industries": []
+    , "industries": []
     , "keywords": []
+    , "company size (minimum)": ""
+    , "company size (maximum)": ""
                               }
 
 # run function for search criteria
