@@ -6,6 +6,8 @@ from datetime import datetime
 from page_scraper import get_url_name
 from page_scraper import scrape_url
 from get_user_input import get_user_input
+from search_linkedin import url_compiler
+from search_linkedin import linkedin_company_url_retriever
 
 # Perform the get_user_input function for search criteria - ASK THE USER STUFF
 input_type_search_criteria = {
@@ -18,7 +20,19 @@ input_type_search_criteria = {
 }
 search_criteria = get_user_input(input_type_search_criteria)
 
+# RUN LINKEDIN SEARCH
+# TODO: this is hardcoded to allow file to run, needs removing
+search_criteria = {
+    'job role': 'product',
+    'location': 'london',
+    'industries': ['financial services'],
+    'keywords': [''],
+    'company size (minimum)': '5',
+    'company size (maximum)': '500'
+}
 
+url_to_search = url_compiler(search_criteria)
+linkedin_company_url_retriever(url_to_search)
 
 # Read company domains from the JSON file
 company_urls_file = 'company_urls.json'

@@ -2,40 +2,40 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-# TODO: this is hardcoded to allow file to run, needs removing
-search_criteria = {'job role': 'product', 'location': 'london', 'industries': ['financial services'], 'keywords': [''], 'company size (minimum)': '5', 'company size (maximum)': '500'}
-
-
 # compile search for url
 def url_compiler(search_criteria):
     # lookup for named locations to codes for LinkedIn purposes
     location_library = {
-        "london": '90009496'
-        , "uk": '101165590'
-        , "san francisco": '90000084'}
+        "london": '90009496',
+        "uk": '101165590',
+        "san francisco": '90000084'
+    }
 
     # lookup for industries locations to codes for LinkedIn purposes
     industries_library = {
-        "financial services": '43'
-        , "professional services": '1810'
-        , "technology, information and media": '1594'}
+        "financial services": '43',
+        "professional services": '1810',
+        "technology, information and media": '1594'
+    }
 
     # list of keywords concat into string with %20
-    keywords_for_url_search = '%20'.join(search_criteria['keywords']).replace(' ', '')
+    keywords_for_url_search = '%20'.join(search_criteria['keywords']).replace(
+        ' ', '')
 
-# TODO: this is not quite correct but illustrative
+    # TODO: this is not quite correct but illustrative
 
     # company size
     company_size_library = {
-        0: 'A'
-        ,10: 'B'
-        , 50: 'C'
-        , 200: 'D'
-    , 500: 'E'
-    , 1000: 'F'
-    , 5000: 'G'
-    ,10000: 'H'
-    , 999999: 'I'}
+        0: 'A',
+        10: 'B',
+        50: 'C',
+        200: 'D',
+        500: 'E',
+        1000: 'F',
+        5000: 'G',
+        10000: 'H',
+        999999: 'I'
+    }
 
     categories = []
 
@@ -43,7 +43,7 @@ def url_compiler(search_criteria):
         min_range = int(search_criteria['company size (minimum)'])
         max_range = int(search_criteria['company size (maximum)'])
 
-        if  min_range <= size <=max_range:
+        if min_range <= size <= max_range:
             categories.append(category)
     # print(categories)
 
@@ -88,15 +88,13 @@ def linkedin_company_url_retriever(linkedin_search_url):
     link_elements = driver.find_elements(By.CLASS_NAME, "app-aware-link")
 
     # take the urls from these
-    link_elements_urls = [link_element.get_attribute('href') for link_element in link_elements]
+    link_elements_urls = [
+        link_element.get_attribute('href') for link_element in link_elements
+    ]
 
     # filter for only company urls
     prefix = 'https://www.linkedin.com/company/'
-    links_linkedin_companies = list(set(list(filter(lambda x: x.startswith(prefix), link_elements_urls))))
+    links_linkedin_companies = list(
+        set(list(filter(lambda x: x.startswith(prefix), link_elements_urls))))
     print(str(len(links_linkedin_companies)) + ' companies found')
     print(*links_linkedin_companies, sep='\n')
-
-
-url_to_search = url_compiler(search_criteria)
-
-linkedin_company_url_retriever(url_to_search)
