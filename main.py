@@ -52,12 +52,15 @@ def check_for_changes(urls, last_checked_file):
             else:
                 unchanged_data.append(url_output)
 
+            # CL progress indicator
+            progress = f"[{'=' * (i - 1)}{' ' * (len(urls) - i)}]"
+            print(f"\rChecking URLs... {progress} {i}/{len(urls)}", end="", flush=True)
+
         except requests.exceptions.RequestException as e:
             print(f"\nError checking {url}: {e}")
 
         # Add a delay so we don't get blocked
         time.sleep(1)
-
 
     print("\nCheck completed.")
 
