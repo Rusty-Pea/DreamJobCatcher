@@ -11,7 +11,7 @@ with open(company_urls_file, 'r') as file:
 
 # Check for page changes since the last time it ran
 subprocess.run(["python", "job_page_change_detector.py"])
-output_files = [f for f in os.listdir('.') if f.startswith('output_')]
+output_files = [f for f in os.listdir('outputs') if f.startswith('output_')]
 if output_files:
     output_file = output_files[-1]  # Get the latest output file
 else:
@@ -19,16 +19,16 @@ else:
     exit()
 
 # Read the JSON data about page changes
-with open(output_file, 'r') as file:
+with open(f'outputs/{output_file}', 'r') as file:
     data = json.load(file)
 
 # Filter only URLs that had changes and have the target term
 changed_urls = [
-    url_data['URL'] for url_data in data if url_data['Change Detected?']
-    and url_data['Contains \'product manager\'']
+    url_data['URL'] for url_data in data
+    if url_data['Change Detected?'] and url_data["Contains 'product manager'"]
 ]
 
-# Scrape all relevant URLs and get rid of irrelevant parts of page (do we still need this?)
+# Scrape all relevant URLs and get rid of irrelevant parts of the page
 for url, domain in zip(changed_urls, company_domains):
     print(f"Scraping {url}")
     subprocess.run(["python", "page_scraper.py"],
@@ -36,10 +36,10 @@ for url, domain in zip(changed_urls, company_domains):
                    text=True)
 
 # Find job links in the scraped content
-job_links_file = open('job_list.txt', 'w')
-for filename in os.listdir('.'):
+job_links_file = open('outputs/job_list.txt', 'w')
+for filename in os.listdir('outputs'):
     if filename.startswith("ps_"):
-        file_path = os.path.join('.', filename)
+        file_path = os.path.join('outputs', filename)
         with open(file_path, 'r') as file:
             html_content = file.read()
 
@@ -48,6 +48,5 @@ for filename in os.listdir('.'):
             job_links_file.write(link + '\n')
 
 job_links_file.close()
-print("Job links saved to job_list.txt")
-
+print("Job links saved to outputs/job_list.txt")
 print("Scraping and job link finding completed.")

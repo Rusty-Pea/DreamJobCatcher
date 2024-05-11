@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup, Comment
 from datetime import datetime
 import re
 import subprocess
+import os
+
 
 def get_url_name(url):
     # Remove the protocol (http:// or https://)
@@ -10,6 +12,12 @@ def get_url_name(url):
     # Replace non-alphanumeric characters with underscores
     url_name = re.sub(r'[^a-zA-Z0-9]', '_', url_name)
     return url_name
+
+
+# Create "outputs" folder if it doesn't exist
+outputs_folder = 'outputs'
+if not os.path.exists(outputs_folder):
+    os.makedirs(outputs_folder)
 
 # Prompt the user for a URL
 url = input("Enter a URL: ")
@@ -22,7 +30,8 @@ try:
     soup = BeautifulSoup(response.text, 'html.parser')
 
     # Ask the user if they want to remove content outside the <body> tag
-    remove_outside_body = input("Do you want to remove content outside the <body> tag? (y/n): ")
+    remove_outside_body = input(
+        "Do you want to remove content outside the <body> tag? (y/n): ")
     if remove_outside_body.lower() == 'y':
         # Find the <body> tag
         body_tag = soup.body
@@ -33,16 +42,21 @@ try:
             print("No <body> tag found in the HTML.")
 
     # Ask the user if they want to remove specific tags and comments
-    remove_tags_comments = input("Do you want to remove <nav>, <header>, <footer>, <img>, <svg>, <canvas>, <noscript> tags, and HTML comments? (y/n): ")
+    remove_tags_comments = input(
+        "Do you want to remove <nav>, <header>, <footer>, <img>, <svg>, <canvas>, <noscript> tags, and HTML comments? (y/n): "
+    )
     if remove_tags_comments.lower() == 'y':
         # Remove specified tags
-        tags_to_remove = ['nav', 'header', 'footer', 'img', 'svg', 'canvas', 'noscript']
+        tags_to_remove = [
+            'nav', 'header', 'footer', 'img', 'svg', 'canvas', 'noscript'
+        ]
         for tag in tags_to_remove:
             for element in soup(tag):
                 element.decompose()
 
         # Remove HTML comments
-        for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
+        for comment in soup.find_all(
+                string=lambda text: isinstance(text, Comment)):
             comment.extract()
 
     # Get the current timestamp
@@ -50,7 +64,7 @@ try:
 
     # Generate the file name using the URL's name and timestamp
     url_name = get_url_name(url)
-    file_name = f"ps_{url_name}_{timestamp}.txt"
+    file_name = f"{outputs_folder}/ps_{url_name}_{timestamp}.txt"
 
     # Write the BeautifulSoup output to the file
     with open(file_name, 'w', encoding='utf-8') as file:
