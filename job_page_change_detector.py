@@ -5,6 +5,10 @@ import json
 from datetime import datetime
 import subprocess
 
+# Read URLs from the file
+with open('company_urls.txt', 'r') as file:
+    urls = [line.strip() for line in file]
+
 def check_for_changes(urls, last_checked_file):
     # Load last checked data from the JSON file
     try:
@@ -82,15 +86,6 @@ def check_for_changes(urls, last_checked_file):
     with open(output_file, 'w') as file:
         json.dump(output_data, file, indent=4)
 
-    # Open the output file
-    subprocess.run(["open", output_file], check=True)
-
-
-urls = [
-    'https://healthy.io/eu/careers/',
-    'https://www.livi.co.uk/careers/business/',
-    'https://apply.workable.com/elvie/',
-]
 last_checked_file = 'last_checked.json'
 
 check_for_changes(urls, last_checked_file)

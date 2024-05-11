@@ -50,7 +50,7 @@ try:
 
     # Generate the file name using the URL's name and timestamp
     url_name = get_url_name(url)
-    file_name = f"{url_name}_{timestamp}.txt"
+    file_name = f"ps_{url_name}_{timestamp}.txt"
 
     # Write the BeautifulSoup output to the file
     with open(file_name, 'w', encoding='utf-8') as file:
