@@ -36,7 +36,7 @@ def google_search_from_linkedin_urls(urls):
         query_term = url.removeprefix(string_to_remove) + ' careers'
         print(f'searching for {query_term} ...')
         # TODO: work out why this is returning more than one result
-        result = list(search(query_term, num=1))
+        result = list(search(query_term))
 
         # include if needing to print all results
         # print(result)
