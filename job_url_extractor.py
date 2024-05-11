@@ -1,6 +1,7 @@
 import sys
 import os
 from anthropic import Anthropic
+import json
 
 def extract_job_urls(file_name):
     # Read the content from the file
@@ -11,7 +12,7 @@ def extract_job_urls(file_name):
     client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
     # Define the prompt for extracting job URLs
-    prompt = f"Please extract the job URLs from the following content:\n\n{content}\n\nJob URLs:"
+    prompt = f"Please extract the job URLs from the following content:\n\n{content}\n\n. Use JSON format with the keys 'index', 'url'."
 
     # Send the prompt to the Claude model using the Anthropic library
     response = client.messages.create(
@@ -25,8 +26,11 @@ def extract_job_urls(file_name):
         model="claude-3-opus-20240229",
     )
 
+    # Parse the JSON response
+    response_data = json.loads(response.json())
+
     # Extract the job URLs from the response
-    job_urls = response.content.strip()
+    job_urls = ''.join(block['text'] for block in response_data['content'] if block['type'] == 'text')
 
     # Generate the output file name
     output_file_name = f"job_urls_{file_name}"
