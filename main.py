@@ -57,6 +57,28 @@ def check_for_changes(urls, last_checked_file):
 
     print("\nCheck completed.")
 
+    # Sort by presence of "product manager"
+    changed_data.sort(key=lambda x: (not x["Contains 'product manager'"]))
+
+    # Combine changed and unchanged data
+    output_data = changed_data + unchanged_data
+
+    # Save updated last checked data to JSON file
+    with open(last_checked_file, 'w') as file:
+        json.dump(last_checked_data, file, indent=4)
+
+    # Generate output file name with a timestamp
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_file = f"output_{timestamp}.json"
+
+    # Save the output data to JSON file
+    with open(output_file, 'w') as file:
+        json.dump(output_data, file, indent=4)
+
+    # Open the output file
+    subprocess.run(["open", output_file], check=True)
+
+
 urls = [
     'https://healthy.io/eu/careers/',
     'https://www.livi.co.uk/careers/business/',
