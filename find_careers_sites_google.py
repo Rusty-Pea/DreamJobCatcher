@@ -13,10 +13,11 @@ def google_search_from_linkedin_urls(urls):
 
         # TODO: add in extra words such as industry
 
-        query_term = url.removeprefix(string_to_remove) + ' careers'
+        query_term = url.removeprefix(string_to_remove).removesuffix('/') + ' careers'
         print(f'searching for {query_term} ...')
         # TODO: work out why this is returning more than one result
         result = list(search(query_term))
+        # print(result[0])
         if len(result) == 0:
             continue
         elif len(result) >=1:

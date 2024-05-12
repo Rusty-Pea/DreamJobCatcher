@@ -114,3 +114,5 @@ def linkedin_company_url_retriever(linkedin_search_url):
         set(list(filter(lambda x: x.startswith(prefix), link_elements_urls))))
     print(str(len(links_linkedin_companies)) + ' companies found')
     print(*links_linkedin_companies, sep='\n')
+
+    return links_linkedin_companies

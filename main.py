@@ -14,7 +14,7 @@ import mode_setting
 
 # Perform the get_user_input function for search criteria - ASK THE USER STUFF
 input_type_search_criteria = {
-    "job role": "",
+    "job_role": "",
     "location": "",
     "industries": [],
     "keywords": [],
@@ -37,28 +37,30 @@ print("End of asking user for input bit")
 # search_criteria = {'job_role': 'product','location': 'london','industries': ['financial services'],'keywords': ['']'company size (minimum)': '5', 'company size (maximum)': '500'}
 
 print(search_criteria)
+
+print('Visit the following url')
 url_to_search = url_compiler(search_criteria)
-#linkedin_company_url_retriever(url_to_search)   
+links_linkedin_companies = linkedin_company_url_retriever(url_to_search)
 
 print("End of LinkedIn searching bit")
 
 ##### CONVERT LINKEDIN PAGES TO CAREER PAGES WITH GOOGLE
 # TODO: currently hardcoded urls - need to remove and take results from prior step
-example_urls = [
-    "https://www.linkedin.com/company/zegocover",
-    "https://www.linkedin.com/company/finimize",
-    "https://www.linkedin.com/company/prodigy-finance",
-    "https://www.linkedin.com/company/clearscore",
-    "https://www.linkedin.com/company/103785291/admin/inbox",
-    "https://www.linkedin.com/company/entrepreneur-first",
-    "https://www.linkedin.com/company/global-association-of-risk-professionals",
-    "https://www.linkedin.com/company/yondercard",
-    "https://www.linkedin.com/company/credit-benchmark",
-    "https://www.linkedin.com/company/paymentsense",
-    "https://www.linkedin.com/company/getmintago"
-]
+# example_urls = [
+#     "https://www.linkedin.com/company/zegocover",
+#     "https://www.linkedin.com/company/finimize",
+#     "https://www.linkedin.com/company/prodigy-finance",
+#     "https://www.linkedin.com/company/clearscore",
+#     "https://www.linkedin.com/company/103785291/admin/inbox",
+#     "https://www.linkedin.com/company/entrepreneur-first",
+#     "https://www.linkedin.com/company/global-association-of-risk-professionals",
+#     "https://www.linkedin.com/company/yondercard",
+#     "https://www.linkedin.com/company/credit-benchmark",
+#     "https://www.linkedin.com/company/paymentsense",
+#     "https://www.linkedin.com/company/getmintago"
+# ]
 
-careers_urls = google_search_from_linkedin_urls(example_urls)
+careers_urls = google_search_from_linkedin_urls(links_linkedin_companies)
 
 '''
 print('Found the following urls:')
@@ -120,8 +122,7 @@ for url, domain in zip(changed_urls, company_domains):
 print("End of career page scraping and removing pointless bits of html bit")
 
 
-#####
-# Find job links in the scraped content
+##### Find job links in the scraped content
 job_links = []
 for filename in os.listdir('outputs'):
     if filename.startswith("ps_"):
