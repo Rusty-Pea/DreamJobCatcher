@@ -1,0 +1,274 @@
+{
+  "users": [
+    {
+      "ID": 1,
+      "name": "Michele",
+      "content": "job roles you are interested in:\nData Scientist, Quantitative Analyst\nsectors/industries:\nFinance Buy SIde (hedge funds, asset managers etc.) Fintech\nlocation:\nLondon\nany other key things you are after:\nLarge datasets, Alternative data, pattern recognition, LLM\nCV if you have one handy (skip this if you want)\nAttached",
+      "roles": [
+        "data scientist",
+        "quantitative analyst"
+      ],
+      "industries": [
+        "finance buy side (hedge funds, asset managers etc.)",
+        "fintech"
+      ],
+      "location": [
+        "london"
+      ],
+      "company size (minimum)": 0,
+      "company size (maximum)": 50000,
+      "keywords": [
+        "large datasets",
+        "alternative data",
+        "pattern recognition",
+        "llm"
+      ]
+    },
+    {
+      "ID": 2,
+      "name": "Kieran",
+      "content": "job roles you are interested in: partnerships, sales, commercial\nsectors/industries: business, sport, music\nlocation: London\nany other key things you are after: cash and enjoyable work\nCV if you have one handy (skip this if you want) I haven't got a recent one",
+      "roles": [
+        "partnerships",
+        "sales",
+        "commercial"
+      ],
+      "industries": [
+        "business",
+        "sport",
+        "music"
+      ],
+      "location": [
+        "london"
+      ],
+      "company size (minimum)": 0,
+      "company size (maximum)": 50000,
+      "keywords": [
+        "cash",
+        "enjoyable work"
+      ]
+    },
+    {
+      "ID": 3,
+      "name": "Alex",
+      "content": "job roles you are interested in: Head of Product (at small startups) Senior PM (at scaleups and large businesses)\n  sectors/industries: Tech, Web3, Fintech, Sports Tech\n  location: Remote, Madrid\n  any other key things you are after: Companies that are building exciting Defi products ideally on EVM chains",
+      "roles": [
+        "Head of Product (at small startups)",
+        "Senior PM (at scaleups and large businesses)"
+      ],
+      "industries": [
+        "Tech",
+        "Web3",
+        "Fintech",
+        "Sports Tech"
+      ],
+      "location": [
+        "Remote",
+        "Madrid"
+      ],
+      "company size (minimum)": 0,
+      "company size (maximum)": 50000,
+      "keywords": [
+        "Companies that are building exciting Defi products ideally on EVM chains"
+      ]
+    },
+    {
+      "ID": 4,
+      "name": "Tom",
+      "content": " job roles you are interested in:\nLegal work - commercial real estate.  Newly qualified level.\n  sectors/industries:\nLaw\n  location:\nLondon only\n  any other key things you are after:\nWork/life balance ",
+      "roles": [
+        "Legal work - commercial real estate.  Newly qualified level."
+      ],
+      "industries": [
+        "Law"
+      ],
+      "location": [
+        "London only"
+      ],
+      "company size (minimum)": 0,
+      "company size (maximum)": 50000,
+      "keywords": [
+        "Work/life balance"
+      ]
+    },
+    {
+      "ID": 5,
+      "name": "Emily",
+      "content": " job roles:  editor, insight manager \nsectors/industries: consumer trend forecasting, market research, editorial/content (not marketing / journalism), insight\nlocation: London\nany other key things you are after: hybrid roles w/ wfh, flexible (ie compressed hours etc possible)\n",
+      "roles": [
+        "editor",
+        "insight manager"
+      ],
+      "industries": [
+        "consumer trend forecasting",
+        "market research",
+        "editorial/content (not marketing / journalism)",
+        "insight"
+      ],
+      "location": [
+        "london"
+      ],
+      "company size (minimum)": 0,
+      "company size (maximum)": 50000,
+      "keywords": [
+        "hybrid roles w/ wfh",
+        "flexible (ie compressed hours etc possible)"
+      ]
+    },
+    {
+      "ID": 6,
+      "name": "Camilla",
+      "content": "job roles you are interested in: integration manager, integration director, separation manager, separation director, strategic projects, corporate development, operations \nsectors/industries: technology, media, consumer, telecommunications \nlocation: London , Singapore \nany other key things you are after: hybrid work \n",
+      "roles": [
+        "integration manager",
+        "integration director",
+        "separation manager",
+        "separation director",
+        "strategic projects",
+        "corporate development",
+        "operations"
+      ],
+      "industries": [
+        "technology",
+        "media",
+        "consumer",
+        "telecommunications"
+      ],
+      "location": [
+        "london",
+        "Singapore"
+      ],
+      "company size (minimum)": 0,
+      "company size (maximum)": 50000,
+      "keywords": [
+        "hybrid work"
+      ]
+    },
+    {
+      "ID": 7,
+      "name": "Dan",
+      "content": "jRoles\nInterested in product management roles. Specifically Head of, Group or Principal roles.\nSectors/Industries\nPretty agnostic but would definitely include fintech.\nLocation\nLondon\nOther key things\nIdeally some level of hybrid working.\nIdeally earlier stage company (20-150 people)",
+      "roles": [
+        "Head of",
+        "Group",
+        "Principal"
+      ],
+      "industries": [
+        "fintech"
+      ],
+      "location": [
+        "london"
+      ],
+      "company size (minimum)": 0,
+      "company size (maximum)": 50000,
+      "keywords": [
+        "Ideally some level of hybrid working",
+        "Ideally earlier stage company (20-150 people)"
+      ]
+    },
+    {
+      "ID": 8,
+      "name": "Pedro",
+      "content": "job roles you are interested in: Head of Compliance or MLRO jobs\n sectors/industries: financial services, private equity, hedge funds\n location: London, UK\n any other key things you are after: Part-time",
+      "roles": [
+        "Head of Compliance",
+        "MLRO jobs"
+      ],
+      "industries": [
+        "financial services",
+        "private equity",
+        "hedge funds"
+      ],
+      "location": [
+        "London, UK"
+      ],
+      "company size (minimum)": 0,
+      "company size (maximum)": 50000,
+      "keywords": [
+        "Part-time"
+      ]
+    },
+    {
+      "ID": 9,
+      "name": "Emil",
+      "content": "job roles you are interested in\nProduct manager, technical product manager, CPO\nsectors/industries\nTechnology, fintech, B2B SaaS\nlocation\nOslo, Norway\nany other key things you are after\nEquity options, >$100,000 salary\n",
+      "roles": [
+        "Product manager",
+        "technical product manager",
+        "CPO"
+      ],
+      "industries": [
+        "Technology",
+        "fintech",
+        "B2B SaaS"
+      ],
+      "location": [
+        "Oslo, Norway"
+      ],
+      "company size (minimum)": 0,
+      "company size (maximum)": 50000,
+      "keywords": [
+        "Equity options",
+        ">$100,000 salary"
+      ]
+    },
+    {
+      "ID": 10,
+      "name": "Andrea",
+      "content": "I'm interested in tech lead/ engineering manager roles in data/analytics engineering. Location London or remote. If London, I prefer a hybrid model (two or three days in the office a week max). I am interested in a fintech company or hedge funds. Ideally, compensation should include bonuses or shares.",
+      "roles": [
+        "tech lead",
+        "engineering manager"
+      ],
+      "industries": [
+        "data/analytics engineering",
+        "fintech",
+        "hedge funds"
+      ],
+      "location": [
+        "london",
+        "remote"
+      ],
+      "company size (minimum)": 0,
+      "company size (maximum)": 50000,
+      "keywords": [
+        "hybrid model (two or three days in the office a week max)",
+        "bonuses or shares"
+      ]
+    },
+    {
+      "ID": 11,
+      "name": "Dom",
+      "content": "I’m looking for Data Platform roles in the finance sector, preferably in asset management.\nLooking for roles in London or America (New York, Austin Texas).\nKey aspects: tech first/quantitive focus, company size 50-100 employees\n",
+      "roles": [
+        "data engineer",
+        "data platform"
+      ],
+      "industries": [
+        "finance",
+        "asset management"
+      ],
+      "location": [
+        "london",
+        "new york",
+        "austin"
+      ],
+      "company size (minimum)": 50,
+      "company size (maximum)": 100,
+      "keywords": [
+        "tech first",
+        "quantitive focus"
+      ]
+    }
+  ]
+}
+{'ID': 8, 'name': 'Pedro'}
+{'ID': 9, 'name': 'Emil'}
+{'ID': 2, 'name': 'Kieran'}
+{'ID': 5, 'name': 'Emily'}
+{'ID': 7, 'name': 'Dan'}
+{'ID': 10, 'name': 'Andrea'}
+
+{'ID': 1, 'name': 'Michele'}
+{'ID': 4, 'name': 'Tom'}
+{'ID': 6, 'name': 'Camilla'}
