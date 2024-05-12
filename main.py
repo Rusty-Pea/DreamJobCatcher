@@ -95,7 +95,7 @@ else:
     last_checked_data = {}
 
 # Check for changes
-job_page_change_detector.check_for_changes(company_urls, last_checked_data, last_checked_file)
+job_page_change_detector.check_for_changes(company_urls, last_checked_data, last_checked_file, search_criteria)
 output_files = [f for f in os.listdir('outputs') if f.startswith('output_')]
 if output_files:
     output_file = output_files[-1]  # Get the latest output file
@@ -113,7 +113,7 @@ print("End of page change checking bit")
 # Filter only URLs that had changes and have the target term
 changed_urls = [
     url_data['URL'] for url_data in data
-    if url_data['Change Detected?'] and url_data["Contains 'product manager'"]
+    if url_data['Change Detected?'] and url_data["Contains job role"]
 ]
 print("End of change and role filtering bit")
 

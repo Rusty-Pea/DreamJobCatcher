@@ -7,7 +7,7 @@ import subprocess
 import os
 
 
-def check_for_changes(urls, last_checked_data, last_checked_file):
+def check_for_changes(urls, last_checked_data, last_checked_file, search_criteria):
     # Lists to store output
     changed_data = []
     unchanged_data = []
@@ -26,20 +26,20 @@ def check_for_changes(urls, last_checked_data, last_checked_file):
             # Compare current content with last checked content
             if last_checked_content is None or current_content != last_checked_content:
                 change_detected = True
-                # Check for product manager in latest content
-                contains_product_manager = "product manager" in current_content.lower(
+                # Check for job role in latest content
+                contains_job_role = search_criteria['job_role'] in current_content.lower(
                 )
                 # Update the last checked content for the URL
                 last_checked_data[url] = current_content
             else:
                 change_detected = False
-                contains_product_manager = False
+                contains_job_role = False
 
             # Create a dictionary for the current URL's output
             url_output = {
                 "URL": url,
                 "Change Detected?": change_detected,
-                "Contains 'product manager'": contains_product_manager,
+                "Contains job role": contains_job_role,
             }
 
             # Append the URL's output to the appropriate list based on change detection
@@ -62,8 +62,8 @@ def check_for_changes(urls, last_checked_data, last_checked_file):
 
     print("\nCheck completed.")
 
-    # Sort by presence of "product manager"
-    changed_data.sort(key=lambda x: (not x["Contains 'product manager'"]))
+    # Sort by presence of job role
+    changed_data.sort(key=lambda x: (not x["Contains job role"]))
 
     # Combine changed and unchanged data
     output_data = changed_data + unchanged_data
