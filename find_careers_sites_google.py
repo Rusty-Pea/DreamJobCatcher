@@ -1,26 +1,9 @@
 from googlesearch import search
 
-# TODO: currently hardcoded urls - need to remove and take results from prior step
-example_urls = [
-    "https://www.linkedin.com/company/zegocover",
-    "https://www.linkedin.com/company/finimize",
-    "https://www.linkedin.com/company/prodigy-finance",
-    "https://www.linkedin.com/company/clearscore",
-    "https://www.linkedin.com/company/103785291/admin/inbox",
-    "https://www.linkedin.com/company/entrepreneur-first",
-    "https://www.linkedin.com/company/global-association-of-risk-professionals",
-    "https://www.linkedin.com/company/yondercard",
-    "https://www.linkedin.com/company/credit-benchmark",
-    "https://www.linkedin.com/company/paymentsense",
-    "https://www.linkedin.com/company/getmintago"
-]
-
-careers_urls = [{"search term": "", "url": ""}]
-
 def google_search_from_linkedin_urls(urls):
+    careers_urls = [{"search term": "", "url": ""}]
     print('starting')
     # print(list(search('Google',num=2)))
-
 
     string_to_remove = "https://www.linkedin.com/company/"
 
@@ -52,10 +35,3 @@ def google_search_from_linkedin_urls(urls):
                 print("Please press y or q:")
 
     return careers_urls
-
-if __name__ == "__main__":
-    google_search_from_linkedin_urls(example_urls)
-
-    print('Found the following urls:')
-    for careers_url in careers_urls:
-        print(careers_url['search term'] + ': ' + careers_url['url'] )

@@ -8,6 +8,7 @@ from page_scraper import scrape_url
 from get_user_input import get_user_input
 from search_linkedin import url_compiler
 from search_linkedin import linkedin_company_url_retriever
+from find_careers_sites_google import google_search_from_linkedin_urls
 
 # Perform the get_user_input function for search criteria - ASK THE USER STUFF
 input_type_search_criteria = {
@@ -18,7 +19,7 @@ input_type_search_criteria = {
     "company size (minimum)": "",
     "company size (maximum)": ""
 }
-search_criteria = get_user_input(input_type_search_criteria)
+#search_criteria = get_user_input(input_type_search_criteria)
 
 print("End of asking user for input bit")
 
@@ -35,13 +36,33 @@ search_criteria = {
 }
 
 url_to_search = url_compiler(search_criteria)
-linkedin_company_url_retriever(url_to_search)   
+#linkedin_company_url_retriever(url_to_search)   
 
 print("End of LinkedIn searching bit")
 
 #####
 #Use LinkedIn pages to generate career pages
 
+# TODO: currently hardcoded urls - need to remove and take results from prior step
+example_urls = [
+    "https://www.linkedin.com/company/zegocover",
+    "https://www.linkedin.com/company/finimize",
+    "https://www.linkedin.com/company/prodigy-finance",
+    "https://www.linkedin.com/company/clearscore",
+    "https://www.linkedin.com/company/103785291/admin/inbox",
+    "https://www.linkedin.com/company/entrepreneur-first",
+    "https://www.linkedin.com/company/global-association-of-risk-professionals",
+    "https://www.linkedin.com/company/yondercard",
+    "https://www.linkedin.com/company/credit-benchmark",
+    "https://www.linkedin.com/company/paymentsense",
+    "https://www.linkedin.com/company/getmintago"
+]
+
+careers_urls = google_search_from_linkedin_urls(example_urls)
+
+print('Found the following urls:')
+for careers_url in careers_urls:
+    print(careers_url['search term'] + ': ' + careers_url['url'] )
 
 print("End of career page finding bit")
 
