@@ -1,30 +1,53 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import json
 
 
 # compile search for url
 def url_compiler(search_criteria):
+    # LOCATION
     # lookup for named locations to codes for LinkedIn purposes
     location_library = {
         "london": '90009496',
         "uk": '101165590',
-        "san francisco": '90000084'
+        "san francisco": '90000084',
+        "madrid": '100994331'
     }
+
+    # location formatted
+    # defaults to london if not found
+    location_code = location_library.get(search_criteria['location'], location_library["london"])
+
+    # INDUSTRIES
 
     # lookup for industries locations to codes for LinkedIn purposes
-    industries_library = {
-        "financial services": '43',
-        "professional services": '1810',
-        "technology, information and media": '1594'
-    }
 
+    lookup_linkedin_industries = 'lookup_linkedin_industries.json'
+    with open(lookup_linkedin_industries, 'r') as file:
+        industries = json.load(file)["industries"]
+        print(industries)
+    print(search_criteria['industries'])
+    industries_ids = []
+    for industry in industries:
+        for search_criteria_industry in search_criteria['industries']:
+            if industry["name"].lower() == search_criteria_industry.lower():
+                industries_ids.append(str(industry["id"]))
+
+    industries_code = '%5B%22' + '%22%2C%22'.join(industries_ids) + '%22%5D'
+
+    # uncomment to hardcode
+    # industries_code = '%5B%2243%22%5D'
+
+
+    # TODO: ignoring keywords for now
     # list of keywords concat into string with %20
-    keywords_for_url_search = '%20'.join(search_criteria['keywords']).replace(
-        ' ', '')
+    # keywords_for_url_search = '%20'.join(search_criteria['keywords']).replace(
+    #     ' ', '')
 
-    # TODO: this is not quite correct but illustrative
 
     # company size
+    # TODO: this is not quite correct but illustrative
+
     company_size_library = {
         0: 'A',
         10: 'B',
@@ -50,14 +73,7 @@ def url_compiler(search_criteria):
     company_size_for_url = '%5B%22' + '%22%2C%22'.join(categories) + '%22%5D'
     # print(company_size_for_url)
 
-    # location formatted
-    location_code = location_library[search_criteria['location']]
 
-    # industries formatted
-    # industries_code = 'industryCompanyVertical' + '%5B%22' + '%22'.join(industries_library[search_criteria['industries']])
-    # TODO: hardcoded temporarily
-    industries_code = '%5B%2243%22%5D'
-    # print(industries_code)
 
     # linked url ends with this format, but seems to not be needed
     # &sid=%3BHH

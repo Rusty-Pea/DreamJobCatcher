@@ -15,17 +15,15 @@ def get_user_input(input_type: dict) -> dict:
         # If no command line arguments are provided, prompt the user for input
         for field in input_type:
             if type(input_type[field]) == list:
-                input_type[field] = str(
+                input_type[field] = [i.strip() for i in str(
                     input("What are your desired {}?: ".format(
                         field +
-                        ' (comma separated)'))).lower().strip().split(',')
+                        ' (comma separated)'))).lower().split(',')]
             elif type(input_type[field]) == str:
                 input_type[field] = input(
                     "What is your desired {}?: ".format(field)).lower()
 
     # TODO: currently hard coding location to london
     input_type['location'] = 'london'
-
-    print(input_type)
 
     return input_type
