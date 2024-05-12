@@ -40,7 +40,14 @@ print(search_criteria)
 
 print('Visit the following url')
 url_to_search = url_compiler(search_criteria)
+
 links_linkedin_companies = linkedin_company_url_retriever(url_to_search)
+# TODO: currently hardcoding clearscore as first result for successful retrieval
+# links_linkedin_companies.insert(0, 'https://www.linkedin.com/company/clearscore/')
+# links_linkedin_companies.insert(0, 'https://wellfound.com/company/finimize-com/jobs')
+links_linkedin_companies.insert(0, 'yondercard')
+
+
 
 print("End of LinkedIn searching bit")
 
@@ -112,11 +119,12 @@ changed_urls = [
 print("End of change and role filtering bit")
 
 #####
-# Scrape all relevant URLs and get rid of irrelevant parts of the page
+# Scrape all relevant URLs and
+# no longer get rid of irrelevant parts of the page
 for url, domain in zip(changed_urls, company_domains):
     print(f"Scraping {url}")
     subprocess.run(["python", "page_scraper.py"],
-                   input=f"{url}\ny\ny\n{domain}",
+                   input=f"{url}\nn\nn\n{domain}",
                    text=True)
 
 print("End of career page scraping and removing pointless bits of html bit")

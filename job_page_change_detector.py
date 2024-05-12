@@ -27,6 +27,8 @@ def check_for_changes(urls, last_checked_data, last_checked_file, search_criteri
             if last_checked_content is None or current_content != last_checked_content:
                 change_detected = True
                 # Check for job role in latest content
+                print('searching for ' + search_criteria['job_role'] + ' in ' + str(url))
+                print(current_content.lower())
                 contains_job_role = search_criteria['job_role'] in current_content.lower()
                 # Update the last checked content for the URL
                 last_checked_data[url] = current_content
