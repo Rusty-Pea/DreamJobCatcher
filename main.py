@@ -26,25 +26,17 @@ global mode
 mode = input("Enter manually (m) or demo mode (d): ")
 
 if mode == "d":
-    mode_setting.get_demo_user()
-    mode_setting.run_demo_user(input_type_search_criteria)
+    search_criteria = mode_setting.run_demo_user(mode_setting.get_demo_user())
 elif mode == "m":
     search_criteria = get_user_input(input_type_search_criteria)
 
 print("End of asking user for input bit")
 
-#####
-# RUN LINKEDIN SEARCH TO FIND COMPANY PAGES ON LI
+##### RUN LINKEDIN SEARCH TO FIND COMPANY PAGES ON LI
 # TODO: this is hardcoded to allow file to run, needs removing
-search_criteria = {
-    'job_role': 'product',
-    'location': 'london',
-    'industries': ['financial services'],
-    'keywords': [''],
-    'company size (minimum)': '5',
-    'company size (maximum)': '500'
-}
+# search_criteria = {'job_role': 'product','location': 'london','industries': ['financial services'],'keywords': ['']'company size (minimum)': '5', 'company size (maximum)': '500'}
 
+print(search_criteria)
 url_to_search = url_compiler(search_criteria)
 #linkedin_company_url_retriever(url_to_search)   
 

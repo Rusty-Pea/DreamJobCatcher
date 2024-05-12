@@ -1,11 +1,10 @@
 import json
 
 def get_demo_user():
-    global demo_user
     print("Entering demo mode")
 
     # Read company domains from the JSON file
-    user_data = 'user_submitted_data.json'
+    user_data = 'user_submitted_data_cleaned.json'
     with open(user_data, 'r') as file:
         user_submitted_data = json.load(file)
         user_names_and_ids = [{"ID": user["ID"], "name": user["name"]} for user in user_submitted_data["users"]]
@@ -20,13 +19,13 @@ def get_demo_user():
         if demo_user["ID"] == demo_user_id:
             return demo_user
 
-def run_demo_user(input_type: dict) -> dict:
+def run_demo_user(demo_user) -> dict:
     # takes the demo user data and outputs, extract only first if multiple locations, job roles given
     demo_user_criteria =  {
-    "job role": demo_user["roles"][0],
+    "job_role": demo_user["roles"][0],
     "location": demo_user["location"][0],
-    "industries": demo_user["industries"], ## need to overwrite this due to mapping issue
-    "keywords": demo_user["keywords"],
+    "industries": demo_user["industries"][0], ## need to overwrite this due to mapping issue
+    "keywords": demo_user["keywords"][0],
     "company size (minimum)": demo_user["company size (minimum)"],
     "company size (maximum)": demo_user["company size (maximum)"]
     }
