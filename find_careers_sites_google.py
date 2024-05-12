@@ -1,9 +1,7 @@
 from googlesearch import search
 
 def google_search_from_linkedin_urls(urls):
-    careers_urls = [{"search term": "", "url": ""}]
-    print('starting')
-    # print(list(search('Google',num=2)))
+    careers_urls = []
 
     string_to_remove = "https://www.linkedin.com/company/"
 
