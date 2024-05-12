@@ -1,7 +1,7 @@
 from linkedin import linkedin
 
 APPLICATON_KEY    = '78h8iawd1r9jby'
-APPLICATON_SECRET = 'WPL_AP0.CZIf9l8NtmOpml7n.NTA1MDk2ODY0'
+APPLICATON_SECRET = ''
 
 RETURN_URL = 'http://localhost:8080'
 
