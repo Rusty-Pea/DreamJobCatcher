@@ -37,7 +37,7 @@ print("End of asking user for input bit")
 # RUN LINKEDIN SEARCH TO FIND COMPANY PAGES ON LI
 # TODO: this is hardcoded to allow file to run, needs removing
 search_criteria = {
-    'job role': 'product',
+    'job_role': 'product',
     'location': 'london',
     'industries': ['financial services'],
     'keywords': [''],
@@ -138,7 +138,7 @@ for filename in os.listdir('outputs'):
             html_content = file.read()
 
         company_domains_copy = company_domains.copy()  # Create a new copy for each iteration
-        found_job_links = find_job_links(html_content, company_domains_copy.pop(0))
+        found_job_links = find_job_links(html_content, company_domains_copy.pop(0), search_criteria)
         for link in found_job_links:
             job_links.append({"job_url": link, "assessment": ""})
 
