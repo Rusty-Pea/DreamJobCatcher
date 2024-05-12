@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
+#TODO: Relative href bit still doesnt work
 
 def find_job_links(html_content, company_domain):
     soup = BeautifulSoup(html_content, 'html.parser')

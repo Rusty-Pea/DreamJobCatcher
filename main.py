@@ -20,7 +20,10 @@ input_type_search_criteria = {
 }
 search_criteria = get_user_input(input_type_search_criteria)
 
-# RUN LINKEDIN SEARCH
+print("End of asking user for input bit")
+
+#####
+# RUN LINKEDIN SEARCH TO FIND COMPANY PAGES ON LI
 # TODO: this is hardcoded to allow file to run, needs removing
 search_criteria = {
     'job role': 'product',
@@ -32,10 +35,17 @@ search_criteria = {
 }
 
 url_to_search = url_compiler(search_criteria)
-linkedin_company_url_retriever(url_to_search)
+linkedin_company_url_retriever(url_to_search)   
 
-#
+print("End of LinkedIn searching bit")
 
+#####
+#Use LinkedIn pages to generate career pages
+
+
+print("End of career page finding bit")
+
+#####
 # Read company domains from the JSON file
 company_urls_file = 'company_urls.json'
 with open(company_urls_file, 'r') as file:
@@ -55,12 +65,17 @@ else:
 with open(f'outputs/{output_file}', 'r') as file:
     data = json.load(file)
 
+print("End of page change checking bit")
+
+#####
 # Filter only URLs that had changes and have the target term
 changed_urls = [
     url_data['URL'] for url_data in data
     if url_data['Change Detected?'] and url_data["Contains 'product manager'"]
 ]
+print("End of change and role filtering bit")
 
+#####
 # Scrape all relevant URLs and get rid of irrelevant parts of the page
 for url, domain in zip(changed_urls, company_domains):
     print(f"Scraping {url}")
@@ -68,6 +83,10 @@ for url, domain in zip(changed_urls, company_domains):
                    input=f"{url}\ny\ny\n{domain}",
                    text=True)
 
+print("End of career page scraping and removing pointless bits of html bit")
+
+
+#####
 # Find job links in the scraped content
 job_links_file = open('outputs/job_list.txt', 'w')
 for filename in os.listdir('outputs'):
@@ -84,7 +103,9 @@ for filename in os.listdir('outputs'):
 
 job_links_file.close()
 print("Job links saved to outputs/job_list.txt")
+print("End of job link finding bit")
 
+#####
 # Create the 'job_files' folder if it doesn't exist
 job_files_folder = os.path.join('outputs', 'job_files')
 if not os.path.exists(job_files_folder):
@@ -109,4 +130,12 @@ for job_link in job_links:
         os.rename(output_file, job_file_path)
         print(f"Job content saved to {job_file_path}")
 
-print("Scraping and job content saving completed.")
+print("End of job link scraping bit")
+
+#####
+# TODO: CREATE LIST OF JOBS
+
+#####
+# TODO: ANALYSE JOBS
+
+print("Full run completed")
