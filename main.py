@@ -68,11 +68,12 @@ for careers_url in careers_urls:
 print("End of career page finding bit")
 
 ##### CHECK FOR PAGE CHANGES SINCE THE LAST CHECK
-# Read company domains from the JSON file
-company_urls_file = 'company_urls.json'
-with open(company_urls_file, 'r') as file:
-    company_urls = json.load(file)
-    company_domains = [url.split('/')[2] for url in company_urls]
+# Get career URLs
+print("Careers URLs:", careers_urls)
+company_urls = [item['url'] for item in careers_urls]
+company_domains = [url.split('/')[2] for url in company_urls]
+print(company_urls)
+print(company_domains)
 
 # Check if 'outputs' folder exists, create if not
 outputs_folder = 'outputs'

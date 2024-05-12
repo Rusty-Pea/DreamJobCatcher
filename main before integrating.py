@@ -9,6 +9,7 @@ from get_user_input import get_user_input
 from search_linkedin import url_compiler
 from search_linkedin import linkedin_company_url_retriever
 from find_careers_sites_google import google_search_from_linkedin_urls
+import job_page_change_detector
 
 # Perform the get_user_input function for search criteria - ASK THE USER STUFF
 input_type_search_criteria = {
@@ -40,9 +41,7 @@ url_to_search = url_compiler(search_criteria)
 
 print("End of LinkedIn searching bit")
 
-#####
-#Use LinkedIn pages to generate career pages
-
+##### CONVERT LINKEDIN PAGES TO CAREER PAGES WITH GOOGLE
 # TODO: currently hardcoded urls - need to remove and take results from prior step
 example_urls = [
     "https://www.linkedin.com/company/zegocover",
@@ -60,22 +59,36 @@ example_urls = [
 
 careers_urls = google_search_from_linkedin_urls(example_urls)
 
+'''
 print('Found the following urls:')
 for careers_url in careers_urls:
     print(careers_url['search term'] + ': ' + careers_url['url'] )
+'''
 
 print("End of career page finding bit")
 
-#####
+##### CHECK FOR PAGE CHANGES SINCE THE LAST CHECK
 # Read company domains from the JSON file
 company_urls_file = 'company_urls.json'
-
 with open(company_urls_file, 'r') as file:
     company_urls = json.load(file)
     company_domains = [url.split('/')[2] for url in company_urls]
 
-# Check for page changes since the last time it ran
-subprocess.run(["python", "job_page_change_detector.py"])
+# Check if 'outputs' folder exists, create if not
+outputs_folder = 'outputs'
+if not os.path.exists(outputs_folder):
+    os.makedirs(outputs_folder)
+
+# Get last checked file
+last_checked_file = 'outputs/last_checked.json'
+if os.path.isfile(last_checked_file):
+    with open(last_checked_file, 'r') as file:
+        last_checked_data = json.load(file)
+else:
+    last_checked_data = {}
+
+# Check for changes
+job_page_change_detector.check_for_changes(company_urls, last_checked_data, last_checked_file)
 output_files = [f for f in os.listdir('outputs') if f.startswith('output_')]
 if output_files:
     output_file = output_files[-1]  # Get the latest output file
