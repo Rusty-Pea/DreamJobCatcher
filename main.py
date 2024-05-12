@@ -10,6 +10,7 @@ from search_linkedin import url_compiler
 from search_linkedin import linkedin_company_url_retriever
 from find_careers_sites_google import google_search_from_linkedin_urls
 import job_page_change_detector
+import mode_setting
 
 # Perform the get_user_input function for search criteria - ASK THE USER STUFF
 input_type_search_criteria = {
@@ -20,7 +21,15 @@ input_type_search_criteria = {
     "company size (minimum)": "",
     "company size (maximum)": ""
 }
-#search_criteria = get_user_input(input_type_search_criteria)
+
+global mode
+mode = input("Enter manually (m) or demo mode (d): ")
+
+if mode == "d":
+    mode_setting.get_demo_user()
+    mode_setting.run_demo_user(input_type_search_criteria)
+elif mode == "m":
+    search_criteria = get_user_input(input_type_search_criteria)
 
 print("End of asking user for input bit")
 
@@ -69,11 +78,8 @@ print("End of career page finding bit")
 
 ##### CHECK FOR PAGE CHANGES SINCE THE LAST CHECK
 # Get career URLs
-print("Careers URLs:", careers_urls)
 company_urls = [item['url'] for item in careers_urls]
 company_domains = [url.split('/')[2] for url in company_urls]
-print(company_urls)
-print(company_domains)
 
 # Check if 'outputs' folder exists, create if not
 outputs_folder = 'outputs'
