@@ -6,25 +6,8 @@ from datetime import datetime
 import subprocess
 import os
 
-# Check if 'outputs' folder exists, create if not
-outputs_folder = 'outputs'
-if not os.path.exists(outputs_folder):
-    os.makedirs(outputs_folder)
 
-# Read URLs from the JSON file
-with open('company_urls.json', 'r') as file:
-    urls = json.load(file)
-
-last_checked_file = 'outputs/last_checked.json'  # Update file path
-
-if os.path.isfile(last_checked_file):
-    with open(last_checked_file, 'r') as file:
-        last_checked_data = json.load(file)
-else:
-    last_checked_data = {}
-
-
-def check_for_changes(urls, last_checked_data):
+def check_for_changes(urls, last_checked_data, last_checked_file):
     # Lists to store output
     changed_data = []
     unchanged_data = []
@@ -96,6 +79,3 @@ def check_for_changes(urls, last_checked_data):
     # Save the output data to JSON file
     with open(output_file, 'w') as file:
         json.dump(output_data, file, indent=4)
-
-
-check_for_changes(urls, last_checked_data)
