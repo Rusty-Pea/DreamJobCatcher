@@ -1,0 +1,54 @@
+{"industries":
+[{"id": 43,
+  "name": "Financial Services"
+},
+  {"id": 6,
+  "name": "Technology, Information and Internet"
+},
+  {"id": 41,
+  "name": "Banking"
+},
+  {"id": 45,
+  "name": "Investment Banking"
+},
+  {"id": 11,
+  "name": "Business Consulting and Services"
+},
+  {"id": 124,
+  "name": "Wellness and Fitness Services"
+},
+  {"id": 115,
+  "name": "Musicians"
+},
+  {"id": 9,
+  "name": "Law Practice"
+},
+  {"id": 10,
+  "name": "Legal Services"
+},
+  {"id": 103,
+  "name": "Writing and Editing"
+},
+  {"id": 97,
+  "name": "Market Research"
+},
+  {"id": 3133,
+  "name": "Media and Telecommunications"
+},
+  {"id": 91,
+  "name": "Consumer Services"
+},
+  {"id": 8,
+  "name": "Telecommunications"
+},
+  {"id": 106,
+  "name": "Venture Capital and Private Equity Principals"
+},
+  {"id": 4,
+  "name": "Software Development"
+},
+  {"id": 2458,
+  "name": "Data Infrastructure and Analytics"
+}
+]
+}
