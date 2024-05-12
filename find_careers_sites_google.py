@@ -16,7 +16,6 @@ example_urls = [
 ]
 
 careers_urls = [{"search term": "", "url": ""}]
-        # 'https://www.zego.com/careers/',]
 
 def google_search_from_linkedin_urls(urls):
     print('starting')
@@ -38,9 +37,6 @@ def google_search_from_linkedin_urls(urls):
         # TODO: work out why this is returning more than one result
         result = list(search(query_term))
 
-        # include if needing to print all results
-        # print(result)
-
         # return only first result
         print(result[0])
         careers_urls.append({"search term": query_term, "url": result[0]})
@@ -56,16 +52,10 @@ def google_search_from_linkedin_urls(urls):
                 print("Please press y or q:")
 
     return careers_urls
-    print(careers_urls)
-
 
 if __name__ == "__main__":
-    # user_query = get_user_query()
     google_search_from_linkedin_urls(example_urls)
 
     print('Found the following urls:')
     for careers_url in careers_urls:
         print(careers_url['search term'] + ': ' + careers_url['url'] )
-
-
-

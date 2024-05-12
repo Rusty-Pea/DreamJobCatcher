@@ -34,6 +34,8 @@ search_criteria = {
 url_to_search = url_compiler(search_criteria)
 linkedin_company_url_retriever(url_to_search)
 
+#
+
 # Read company domains from the JSON file
 company_urls_file = 'company_urls.json'
 with open(company_urls_file, 'r') as file:
