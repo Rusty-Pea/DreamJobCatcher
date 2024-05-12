@@ -60,17 +60,16 @@ example_urls = [
 
 careers_urls = google_search_from_linkedin_urls(example_urls)
 
-'''
 print('Found the following urls:')
 for careers_url in careers_urls:
     print(careers_url['search term'] + ': ' + careers_url['url'] )
-'''
 
 print("End of career page finding bit")
 
 #####
 # Read company domains from the JSON file
 company_urls_file = 'company_urls.json'
+
 with open(company_urls_file, 'r') as file:
     company_urls = json.load(file)
     company_domains = [url.split('/')[2] for url in company_urls]
